@@ -74,6 +74,8 @@ namespace EnviaEmails
             this.lblEnviado = new System.Windows.Forms.Label();
             this.btnSalvarRemetente = new System.Windows.Forms.Button();
             this.ofdContatos = new System.Windows.Forms.OpenFileDialog();
+            this.tbReplicarTo = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.tbcPrincipal.SuspendLayout();
             this.tbpConfiguracao.SuspendLayout();
             this.tbpContatos.SuspendLayout();
@@ -115,6 +117,8 @@ namespace EnviaEmails
             // 
             // tbpConfiguracao
             // 
+            this.tbpConfiguracao.Controls.Add(this.tbReplicarTo);
+            this.tbpConfiguracao.Controls.Add(this.label15);
             this.tbpConfiguracao.Controls.Add(this.btnAnexo);
             this.tbpConfiguracao.Controls.Add(this.tbAnexo);
             this.tbpConfiguracao.Controls.Add(this.label14);
@@ -146,7 +150,7 @@ namespace EnviaEmails
             this.btnAnexo.BackColor = System.Drawing.Color.SteelBlue;
             this.btnAnexo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnexo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAnexo.Location = new System.Drawing.Point(791, 241);
+            this.btnAnexo.Location = new System.Drawing.Point(791, 247);
             this.btnAnexo.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnexo.Name = "btnAnexo";
             this.btnAnexo.Size = new System.Drawing.Size(85, 38);
@@ -158,7 +162,7 @@ namespace EnviaEmails
             // tbAnexo
             // 
             this.tbAnexo.Enabled = false;
-            this.tbAnexo.Location = new System.Drawing.Point(104, 247);
+            this.tbAnexo.Location = new System.Drawing.Point(104, 253);
             this.tbAnexo.Margin = new System.Windows.Forms.Padding(2);
             this.tbAnexo.Multiline = true;
             this.tbAnexo.Name = "tbAnexo";
@@ -168,7 +172,7 @@ namespace EnviaEmails
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(101, 224);
+            this.label14.Location = new System.Drawing.Point(101, 230);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(54, 20);
@@ -177,7 +181,7 @@ namespace EnviaEmails
             // 
             // tbLogin
             // 
-            this.tbLogin.Location = new System.Drawing.Point(105, 182);
+            this.tbLogin.Location = new System.Drawing.Point(105, 188);
             this.tbLogin.Margin = new System.Windows.Forms.Padding(2);
             this.tbLogin.Multiline = true;
             this.tbLogin.Name = "tbLogin";
@@ -187,7 +191,7 @@ namespace EnviaEmails
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(101, 159);
+            this.label13.Location = new System.Drawing.Point(101, 165);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 20);
@@ -196,7 +200,7 @@ namespace EnviaEmails
             // 
             // tbPorta
             // 
-            this.tbPorta.Location = new System.Drawing.Point(805, 182);
+            this.tbPorta.Location = new System.Drawing.Point(805, 188);
             this.tbPorta.Margin = new System.Windows.Forms.Padding(2);
             this.tbPorta.Multiline = true;
             this.tbPorta.Name = "tbPorta";
@@ -206,7 +210,7 @@ namespace EnviaEmails
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(801, 159);
+            this.label6.Location = new System.Drawing.Point(801, 165);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 20);
@@ -215,7 +219,7 @@ namespace EnviaEmails
             // 
             // tbSmtp
             // 
-            this.tbSmtp.Location = new System.Drawing.Point(572, 182);
+            this.tbSmtp.Location = new System.Drawing.Point(572, 188);
             this.tbSmtp.Margin = new System.Windows.Forms.Padding(2);
             this.tbSmtp.Multiline = true;
             this.tbSmtp.Name = "tbSmtp";
@@ -225,7 +229,7 @@ namespace EnviaEmails
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(569, 159);
+            this.label5.Location = new System.Drawing.Point(569, 165);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 20);
@@ -234,7 +238,7 @@ namespace EnviaEmails
             // 
             // tbAssunto
             // 
-            this.tbAssunto.Location = new System.Drawing.Point(572, 113);
+            this.tbAssunto.Location = new System.Drawing.Point(571, 66);
             this.tbAssunto.Margin = new System.Windows.Forms.Padding(2);
             this.tbAssunto.Multiline = true;
             this.tbAssunto.Name = "tbAssunto";
@@ -244,7 +248,7 @@ namespace EnviaEmails
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(568, 90);
+            this.label4.Location = new System.Drawing.Point(567, 43);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 20);
@@ -253,7 +257,7 @@ namespace EnviaEmails
             // 
             // tbSenha
             // 
-            this.tbSenha.Location = new System.Drawing.Point(341, 182);
+            this.tbSenha.Location = new System.Drawing.Point(341, 188);
             this.tbSenha.Margin = new System.Windows.Forms.Padding(2);
             this.tbSenha.Multiline = true;
             this.tbSenha.Name = "tbSenha";
@@ -264,7 +268,7 @@ namespace EnviaEmails
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(337, 159);
+            this.label3.Location = new System.Drawing.Point(337, 165);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 20);
@@ -273,7 +277,7 @@ namespace EnviaEmails
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(341, 113);
+            this.tbEmail.Location = new System.Drawing.Point(340, 66);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(2);
             this.tbEmail.Multiline = true;
             this.tbEmail.Name = "tbEmail";
@@ -283,7 +287,7 @@ namespace EnviaEmails
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(338, 90);
+            this.label2.Location = new System.Drawing.Point(337, 43);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 20);
@@ -292,7 +296,7 @@ namespace EnviaEmails
             // 
             // tbRemetente
             // 
-            this.tbRemetente.Location = new System.Drawing.Point(105, 113);
+            this.tbRemetente.Location = new System.Drawing.Point(105, 66);
             this.tbRemetente.Margin = new System.Windows.Forms.Padding(2);
             this.tbRemetente.Multiline = true;
             this.tbRemetente.Name = "tbRemetente";
@@ -302,7 +306,7 @@ namespace EnviaEmails
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(101, 90);
+            this.label1.Location = new System.Drawing.Point(101, 43);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(135, 20);
@@ -612,6 +616,25 @@ namespace EnviaEmails
             this.ofdContatos.DefaultExt = "csv";
             this.ofdContatos.InitialDirectory = "C:\\Users\\warne\\Documenos";
             // 
+            // tbReplicarTo
+            // 
+            this.tbReplicarTo.Location = new System.Drawing.Point(104, 127);
+            this.tbReplicarTo.Margin = new System.Windows.Forms.Padding(2);
+            this.tbReplicarTo.Multiline = true;
+            this.tbReplicarTo.Name = "tbReplicarTo";
+            this.tbReplicarTo.Size = new System.Drawing.Size(218, 25);
+            this.tbReplicarTo.TabIndex = 18;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(100, 104);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(177, 20);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "Replicar respostas para";
+            // 
             // PrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -688,6 +711,8 @@ namespace EnviaEmails
         private System.Windows.Forms.Button btnAnexo;
         private System.Windows.Forms.TextBox tbAnexo;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox tbReplicarTo;
+        private System.Windows.Forms.Label label15;
     }
 }
 

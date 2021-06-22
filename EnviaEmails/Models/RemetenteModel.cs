@@ -17,5 +17,6 @@ namespace EnviaEmails.Models
         public string Senha { get; set; }
         public string Assunto { get; set; }
         public string Anexo { get; set; }
+        public string ReplicarTo { get; set; }
     }
 }

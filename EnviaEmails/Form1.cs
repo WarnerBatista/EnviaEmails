@@ -137,6 +137,7 @@ namespace EnviaEmails
                 ValidaCampo.Validar(tbPorta, "Porta");
                 remetente.Anexo = tbAnexo.Text;
                 remetente.Email = tbEmail.Text;
+                remetente.ReplicarTo = tbReplicarTo.Text;
                 remetente.Assunto = tbAssunto.Text;
                 remetente.Nome = tbRemetente.Text;
                 remetente.Porta = Convert.ToInt32(tbPorta.Text);

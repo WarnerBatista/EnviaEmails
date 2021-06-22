@@ -25,6 +25,10 @@ namespace EnviaEmails.Helpers
                 {
                     mensagem.Attachments.Add(new Attachment(model.Anexo));
                 }
+                if (!string.IsNullOrEmpty(model.ReplicarTo))
+                {
+                    mensagem.ReplyToList.Add(model.ReplicarTo);
+                }
                 mensagem.IsBodyHtml = true;
                 mensagem.Body = msg;
                 mensagem.Subject = model.Assunto;
