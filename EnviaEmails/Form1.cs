@@ -130,14 +130,17 @@ namespace EnviaEmails
             {
                 ValidaCampo.Validar(tbRemetente, "Remetente");
                 ValidaCampo.Validar(tbEmail, "EMail");
+                ValidaCampo.Validar(tbLogin, "Login");
                 ValidaCampo.Validar(tbSenha, "Senha");
                 ValidaCampo.Validar(tbAssunto, "Assunto");
                 ValidaCampo.Validar(tbSmtp, "SMTP");
                 ValidaCampo.Validar(tbPorta, "Porta");
+                remetente.Anexo = tbAnexo.Text;
                 remetente.Email = tbEmail.Text;
                 remetente.Assunto = tbAssunto.Text;
                 remetente.Nome = tbRemetente.Text;
                 remetente.Porta = Convert.ToInt32(tbPorta.Text);
+                remetente.Login = tbLogin.Text;
                 remetente.Senha = tbSenha.Text;
                 remetente.Smtp = tbSmtp.Text;
                 CarregarListaDestinatarios();
@@ -159,14 +162,13 @@ namespace EnviaEmails
                     {
                         enviados++;
                         lblEnviado.Text = enviados.ToString();
-                        Application.DoEvents();
                     }
                     else
                     {
                         numeroFalhas++;
                         lblFalhado.Text = numeroFalhas.ToString();
-                        Application.DoEvents();
                     }
+                    Application.DoEvents();
                 });
             }
             pictureBox1.Visible = false; 
@@ -190,6 +192,15 @@ namespace EnviaEmails
                 i++;
             }
             return conteudo;
+        }
+
+        private void btnAnexo_Click(object sender, EventArgs e)
+        {
+            if (ofdContatos.ShowDialog() == DialogResult.OK)
+            {
+                string path = ofdContatos.FileName;
+                tbAnexo.Text = path;
+            }
         }
     }
 }
