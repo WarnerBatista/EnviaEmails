@@ -33,6 +33,8 @@ namespace EnviaEmails
             this.pnlTopo = new System.Windows.Forms.Panel();
             this.tbcPrincipal = new System.Windows.Forms.TabControl();
             this.tbpConfiguracao = new System.Windows.Forms.TabPage();
+            this.tbReplicarTo = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.btnAnexo = new System.Windows.Forms.Button();
             this.tbAnexo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -74,8 +76,7 @@ namespace EnviaEmails
             this.lblEnviado = new System.Windows.Forms.Label();
             this.btnSalvarRemetente = new System.Windows.Forms.Button();
             this.ofdContatos = new System.Windows.Forms.OpenFileDialog();
-            this.tbReplicarTo = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.ltbLog = new System.Windows.Forms.ListBox();
             this.tbcPrincipal.SuspendLayout();
             this.tbpConfiguracao.SuspendLayout();
             this.tbpContatos.SuspendLayout();
@@ -144,6 +145,25 @@ namespace EnviaEmails
             this.tbpConfiguracao.TabIndex = 0;
             this.tbpConfiguracao.Text = "Configurações";
             this.tbpConfiguracao.UseVisualStyleBackColor = true;
+            // 
+            // tbReplicarTo
+            // 
+            this.tbReplicarTo.Location = new System.Drawing.Point(104, 127);
+            this.tbReplicarTo.Margin = new System.Windows.Forms.Padding(2);
+            this.tbReplicarTo.Multiline = true;
+            this.tbReplicarTo.Name = "tbReplicarTo";
+            this.tbReplicarTo.Size = new System.Drawing.Size(218, 25);
+            this.tbReplicarTo.TabIndex = 18;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(100, 104);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(177, 20);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "Replicar respostas para";
             // 
             // btnAnexo
             // 
@@ -509,6 +529,7 @@ namespace EnviaEmails
             // 
             // tbpEnvio
             // 
+            this.tbpEnvio.Controls.Add(this.ltbLog);
             this.tbpEnvio.Controls.Add(this.pictureBox1);
             this.tbpEnvio.Controls.Add(this.label11);
             this.tbpEnvio.Controls.Add(this.lblFalhado);
@@ -529,10 +550,10 @@ namespace EnviaEmails
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = global::EnviaEmails.Properties.Resources.gif_sending;
             this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(592, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(592, 2);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(278, 221);
+            this.pictureBox1.Size = new System.Drawing.Size(278, 189);
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
@@ -616,24 +637,17 @@ namespace EnviaEmails
             this.ofdContatos.DefaultExt = "csv";
             this.ofdContatos.InitialDirectory = "C:\\Users\\warne\\Documenos";
             // 
-            // tbReplicarTo
+            // ltbLog
             // 
-            this.tbReplicarTo.Location = new System.Drawing.Point(104, 127);
-            this.tbReplicarTo.Margin = new System.Windows.Forms.Padding(2);
-            this.tbReplicarTo.Multiline = true;
-            this.tbReplicarTo.Name = "tbReplicarTo";
-            this.tbReplicarTo.Size = new System.Drawing.Size(218, 25);
-            this.tbReplicarTo.TabIndex = 18;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(100, 104);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(177, 20);
-            this.label15.TabIndex = 17;
-            this.label15.Text = "Replicar respostas para";
+            this.ltbLog.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ltbLog.FormattingEnabled = true;
+            this.ltbLog.ItemHeight = 20;
+            this.ltbLog.Items.AddRange(new object[] {
+            "Lista de Emails Com Erros"});
+            this.ltbLog.Location = new System.Drawing.Point(0, 199);
+            this.ltbLog.Name = "ltbLog";
+            this.ltbLog.Size = new System.Drawing.Size(1016, 284);
+            this.ltbLog.TabIndex = 22;
             // 
             // PrincipalForm
             // 
@@ -713,6 +727,7 @@ namespace EnviaEmails
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox tbReplicarTo;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ListBox ltbLog;
     }
 }
 

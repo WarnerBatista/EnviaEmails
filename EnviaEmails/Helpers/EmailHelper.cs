@@ -11,6 +11,8 @@ namespace EnviaEmails.Helpers
 {
     public class EmailHelper
     {
+        public static string Message;
+
         public static bool EnviarEmail(string msg, DestinatarioModel destinatarioModel, RemetenteModel model)
         {
             var cliente = new SmtpClient(model.Smtp, model.Porta /* TLS */)
@@ -44,7 +46,7 @@ namespace EnviaEmails.Helpers
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    Message = ex.Message;
                 }
                 finally
                 {

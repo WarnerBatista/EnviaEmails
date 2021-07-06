@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace EnviaEmails
@@ -17,6 +18,7 @@ namespace EnviaEmails
         public List<string> lstEmail { get; set; }
         List<string[]> _lines;
         public List<DestinatarioModel> lstDestinatarios { get; set; }
+        public RemetenteModel remetente;
         public PrincipalForm()
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace EnviaEmails
             _headers = new List<string>();
             _lines = new List<string[]>();
             lstDestinatarios = new List<DestinatarioModel>();
+            remetente = new RemetenteModel();
         }
 
         private void PrincipalForm_Load(object sender, EventArgs e)
@@ -125,7 +128,6 @@ namespace EnviaEmails
 
         private void btnSalvarRemetente_Click(object sender, EventArgs e)
         {
-            RemetenteModel remetente = new RemetenteModel();
             try
             {
                 ValidaCampo.Validar(tbRemetente, "Remetente");
@@ -149,31 +151,32 @@ namespace EnviaEmails
             catch { }
 
             pictureBox1.Visible = true;
-            Application.DoEvents();
-            if (lstDestinatarios.Count > 0)
-            {
-                int numeroFalhas = 0;
-                int enviados = 0;
-                lblTotal.Text = lstDestinatarios.Count.ToString();
-                lblEnviado.Text = "0";
-                lblFalhado.Text = "0";
-                lstDestinatarios.ForEach(x =>
-                {
-                    if (EmailHelper.EnviarEmail(VerificarVariaveis(_html, x.DadosDestinatario), x, remetente))
-                    {
-                        enviados++;
-                        lblEnviado.Text = enviados.ToString();
-                    }
-                    else
-                    {
-                        numeroFalhas++;
-                        lblFalhado.Text = numeroFalhas.ToString();
-                    }
-                    Application.DoEvents();
-                });
-            }
-            pictureBox1.Visible = false; 
-            Application.DoEvents();
+            lblTotal.Text = lstDestinatarios.Count.ToString();
+            lblEnviado.Text = "0";
+            lblFalhado.Text = "0";
+            Thread t = new Thread(Enviar);
+            t.Start();
+            //if (lstDestinatarios.Count > 0)
+            //{
+            //    int numeroFalhas = 0;
+            //    int enviados = 0;
+            //    lblTotal.Text = lstDestinatarios.Count.ToString();
+            //    lblEnviado.Text = "0";
+            //    lblFalhado.Text = "0";
+            //    lstDestinatarios.ForEach(x =>
+            //    {
+            //        if (EmailHelper.EnviarEmail(VerificarVariaveis(_html, x.DadosDestinatario), x, remetente))
+            //        {
+            //            enviados++;
+            //            lblEnviado.Text = enviados.ToString();
+            //        }
+            //        else
+            //        {
+            //            numeroFalhas++;
+            //            lblFalhado.Text = numeroFalhas.ToString();
+            //        }
+            //    });
+            //}
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -202,6 +205,46 @@ namespace EnviaEmails
                 string path = ofdContatos.FileName;
                 tbAnexo.Text = path;
             }
+        }
+
+        private void Enviar()
+        {
+            if (lstDestinatarios.Count > 0)
+            {
+                int numeroFalhas = 0;
+                int enviados = 0;
+                
+                lstDestinatarios.ForEach(x =>
+                {
+                    if (EmailHelper.EnviarEmail(VerificarVariaveis(_html, x.DadosDestinatario), x, remetente))
+                    {
+                        enviados++;
+                        ExecutaInvoke(() =>
+                        {
+                            lblEnviado.Text = enviados.ToString();
+                        });
+                    }
+                    else
+                    {
+                        numeroFalhas++;
+                        ExecutaInvoke(() =>
+                        {
+                            lblFalhado.Text = numeroFalhas.ToString();
+                            ltbLog.Items.Add(EmailHelper.Message);
+                        });
+                    }
+                });
+                ExecutaInvoke(() =>
+                {
+                    pictureBox1.Visible = false;
+                });
+                
+            }
+        }
+
+        private void ExecutaInvoke(Action action)
+        {
+            Invoke(new Action(action));
         }
     }
 }
